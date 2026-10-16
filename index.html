@@ -44,6 +44,10 @@
   section{padding:28px 0}
   .card{display:grid;grid-template-columns:1fr 220px;gap:28px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:var(--shadow);margin-bottom:22px}
   .card h3{margin:0 0 4px;font-size:22px}
+  .inpi{display:inline-flex;align-items:center;gap:8px;margin:2px 0 12px;padding:6px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);font-size:13px;color:var(--ink)}
+  .inpi b{color:var(--accent)}
+  .inpi::before{content:"✓";display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:11px;font-weight:700}
+  .notice{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:12px 16px;margin:0 0 22px;font-size:15px}
   .tag{display:inline-block;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--chip);color:var(--chip-ink);margin-bottom:10px}
   .card p{margin:8px 0}
   .chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 16px;padding:0;list-style:none}
@@ -82,11 +86,13 @@
   <section id="projetos" aria-labelledby="t-proj">
     <h2 id="t-proj">Projetos</h2>
     <p class="sub">Três projetos pessoais, do protótipo à entrega. O código do Zurvo e do Servoi é privado; mostro a engenharia aqui e posso apresentar o código em uma demonstração.</p>
+    <p class="notice"><span><strong>Propriedade intelectual protegida.</strong> Os três projetos estão registrados no INPI como programa de computador (Lei nº 9.609/1998). O número do processo aparece em cada projeto e pode ser consultado em <a href="https://busca.inpi.gov.br/pePI/" rel="noopener">busca.inpi.gov.br</a>.</span></p>
 
     <article class="card">
       <div>
         <span class="tag">Em desenvolvimento · código privado</span>
         <h3>Zurvo</h3>
+        <div class="inpi"><b>Registrado no INPI</b> · Processo nº 512026009066-0</div>
         <p>Aplicativo de encontros que mostra no mapa onde há movimento por perto, com chat e cutucadas em tempo real, para Android, iOS e Web.</p>
         <p>Construído de ponta a ponta: API, banco de dados, aplicativo Flutter e aplicação web, com contrato OpenAPI único entre os clientes, autenticação segura e envio de fotos direto ao armazenamento.</p>
         <ul class="chips" aria-label="Tecnologias do Zurvo">
@@ -101,6 +107,7 @@
       <div>
         <span class="tag">Em desenvolvimento · código privado</span>
         <h3>Servoi</h3>
+        <div class="inpi"><b>Registrado no INPI</b> · Processo nº 512026009069-5</div>
         <p>Aplicativo para encontrar prestadores de serviço presenciais perto de você (diarista, eletricista, mecânico etc.) no mapa, para Android, iOS e Web.</p>
         <p>O sistema central já cobre busca geográfica, cadastro, login, pedidos, avaliações e chat, com regras de integridade e privacidade no próprio banco de dados, testes com banco real e backup verificado por restauração.</p>
         <ul class="chips" aria-label="Tecnologias do Servoi">
@@ -115,8 +122,9 @@
       <div>
         <span class="tag">Código aberto · Android</span>
         <h3>ZapDeck</h3>
+        <div class="inpi"><b>Registrado no INPI</b> · Processo nº 512026008981-6</div>
         <p>Aplicativo Android que transforma cartões de visita de papel em contatos digitais: o usuário fotografa o cartão e o app lê os dados sozinho, envia mensagem pelo WhatsApp, salva na agenda e compartilha por QR Code ou NFC.</p>
-        <p>Funciona sem internet e sem cadastro, com tratamento de imagem próprio e inteligência artificial opcional para casos difíceis. Software registrado no INPI.</p>
+        <p>Funciona sem internet e sem cadastro, com tratamento de imagem próprio e inteligência artificial opcional para casos difíceis.</p>
         <ul class="chips" aria-label="Tecnologias do ZapDeck">
           <li>Kotlin</li><li>Jetpack Compose</li><li>Room</li><li>Google ML Kit</li><li>Gemini (opcional)</li><li>NFC e QR Code</li>
         </ul>
