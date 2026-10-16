@@ -53,6 +53,11 @@
   .cert img{display:block;width:100%;height:auto}
   .cert h3{margin:0 0 4px;font-size:21px}
   .cert p{margin:6px 0;color:var(--ink-soft)}
+  .facts{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:12px 0 14px;font-size:14px}
+  .facts dt{color:var(--ink-soft)}
+  .facts dd{margin:0;color:var(--ink);overflow-wrap:anywhere}
+  .facts code{font-size:12.5px}
+  .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
   .tag{display:inline-block;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--chip);color:var(--chip-ink);margin-bottom:10px}
   .card p{margin:8px 0}
   .chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 16px;padding:0;list-style:none}
@@ -100,8 +105,18 @@
       <div>
         <span class="tag">Oracle Certified Professional</span>
         <h3>Java SE 6 Programmer</h3>
-        <p>Certificado emitido pela Oracle em 30 de setembro de 2010.</p>
-        <p><a class="btn primary" href="img/ocp-java-se-6.jpg" target="_blank" rel="noopener">Abrir o certificado →</a></p>
+        <dl class="facts">
+          <dt>Titular</dt><dd>Fabio Anderson Correa Bentes</dd>
+          <dt>Emissor</dt><dd>Oracle</dd>
+          <dt>Emitido em</dt><dd>30/09/2010</dd>
+          <dt>ID do badge</dt><dd><code>3a4b0aa7-215a-48c2-b11e-40853c7fcc56</code></dd>
+        </dl>
+        <p>Certificação aposentada pela Oracle; o titular mantém o certificado e o badge digital. A autenticidade pode ser conferida no Credly, plataforma oficial de badges da Oracle, ou no CertView da Oracle.</p>
+        <div class="row">
+          <a class="btn primary" href="https://www.credly.com/badges/3a4b0aa7-215a-48c2-b11e-40853c7fcc56" target="_blank" rel="noopener">Verificar autenticidade (Credly) →</a>
+          <a class="btn" href="img/ocp-java-se-6.jpg" target="_blank" rel="noopener">Abrir o certificado</a>
+          <a class="btn" href="https://certview.oracle.com" target="_blank" rel="noopener">CertView Oracle</a>
+        </div>
       </div>
     </div>
   </section>
