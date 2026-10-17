@@ -58,6 +58,17 @@
   .facts dd{margin:0;color:var(--ink);overflow-wrap:anywhere}
   .facts code{font-size:12.5px}
   .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+  .stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(440px,1fr));gap:4px 36px;margin:6px 0 24px;padding:0;list-style:none}
+  .stack li{display:grid;grid-template-columns:128px 1fr;gap:10px;align-items:baseline;font-size:15px;padding:6px 0;border-bottom:1px dashed var(--line)}
+  .stack b{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+  .stack span{color:var(--ink)}
+  details.tech{margin:4px 0 14px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+  details.tech summary{cursor:pointer;padding:9px 14px;font-weight:600;font-size:14px;color:var(--accent);list-style:none}
+  details.tech summary::-webkit-details-marker{display:none}
+  details.tech summary::before{content:"+";display:inline-block;width:18px;font-weight:700}
+  details.tech[open] summary::before{content:"–"}
+  details.tech ul{margin:0;padding:2px 18px 14px 34px;color:var(--ink-soft);font-size:14.5px}
+  details.tech li{margin:5px 0}
   .tag{display:inline-block;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--chip);color:var(--chip-ink);margin-bottom:10px}
   .card p{margin:8px 0}
   .chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 16px;padding:0;list-style:none}
@@ -71,6 +82,7 @@
   .box p{margin:0;color:var(--ink-soft);font-size:15px}
   footer{padding:36px 0 56px;color:var(--ink-soft);font-size:14px;border-top:1px solid var(--line);margin-top:20px}
   @media (max-width:760px){
+    .stack li{grid-template-columns:1fr;gap:2px}
     .cert{grid-template-columns:1fr;padding:18px}
     .card{grid-template-columns:1fr;padding:20px}
     .shot{order:-1}
@@ -86,6 +98,15 @@
     <h1>Fábio A. C. Bentes</h1>
     <p class="lead">Desenvolvedor de software. Construo sistemas de ponta a ponta: backend em Java e Spring Boot, aplicativos móveis em Flutter e Android nativo, com foco em privacidade e qualidade.</p>
     <p class="lead">Desenvolvo com apoio de inteligência artificial (<strong>Claude Code</strong>), dentro de um processo disciplinado: <strong>SDD</strong> (especificação escrita antes do código), <strong>ADRs</strong> (decisões de arquitetura registradas), testes automatizados e integração contínua.</p>
+    <ul class="stack" aria-label="Tecnologias">
+      <li><b>Backend</b><span>Java 25 · Spring Boot · Spring Security · REST/OpenAPI · WebSocket</span></li>
+      <li><b>Dados</b><span>PostgreSQL · PostGIS · Redis · Flyway</span></li>
+      <li><b>Segurança</b><span>JWT · OAuth (Google) · Argon2id · BCrypt · SHA-256/HMAC · Privacidade e LGPD</span></li>
+      <li><b>Resiliência</b><span>Degradação controlada · Backup verificado · Prometheus</span></li>
+      <li><b>Infra e entrega</b><span>Docker · GitHub Actions</span></li>
+      <li><b>Mobile e web</b><span>Flutter · Kotlin · Jetpack Compose · Svelte</span></li>
+      <li><b>Qualidade</b><span>JUnit · Testcontainers · SDD · ADR · Claude Code</span></li>
+    </ul>
     <div class="links">
       <a class="btn primary" href="#projetos">Ver projetos</a>
       <a class="btn" href="#certificacao">Certificação Oracle</a>
@@ -137,6 +158,17 @@
         <ul class="chips" aria-label="Tecnologias do Zurvo">
           <li>Java 25</li><li>Spring Boot 4.1</li><li>PostgreSQL</li><li>WebSocket</li><li>Flutter</li><li>Svelte 5</li><li>OpenAPI</li>
         </ul>
+        <details class="tech"><summary>Detalhes técnicos</summary>
+          <ul>
+            <li>API em Java 25 e Spring Boot 4.1, com contrato OpenAPI único para o app Flutter e a web em Svelte.</li>
+            <li>Tempo real com WebSocket/STOMP autenticado; a conexão é fechada quando o token expira.</li>
+            <li>Login com Google (ID token validado por JWKS, RS256) e com e-mail e senha (BCrypt); JWT de curta duração; refresh token opaco guardado só como hash SHA-256; códigos de redefinição com HMAC-SHA-256 e limite de tentativas.</li>
+            <li>Fotos por URL assinada, com envio direto ao Cloudflare R2 e rotina que apaga arquivos órfãos.</li>
+            <li>Pagamento por PIX (OpenPix) com webhooks; recursos novos atrás de <em>feature flags</em> desligadas por padrão.</li>
+            <li>Privacidade: a posição exata nunca é exposta, o mapa anônimo é agregado por grade na própria consulta SQL e a exclusão de conta anonimiza os dados.</li>
+            <li>Moderação de fotos com ocultação automática; SDD, ADRs, mais de 260 testes; Docker Compose e staging na nuvem.</li>
+          </ul>
+        </details>
         <a class="btn" href="https://github.com/fbentes/zurvo-portfolio" rel="noopener">Ver arquitetura e decisões →</a>
       </div>
       <figure class="shot"><img src="img/zurvo.png" alt="Tela do mapa do Zurvo, com pontos de movimento e lista de pessoas por perto" width="280" height="589" loading="lazy"><small>Protótipo com dados fictícios</small></figure>
@@ -152,6 +184,19 @@
         <ul class="chips" aria-label="Tecnologias do Servoi">
           <li>Java 25</li><li>Spring Boot 4.1</li><li>PostgreSQL + PostGIS</li><li>Redis</li><li>Flutter</li><li>Testcontainers</li><li>Docker</li>
         </ul>
+        <details class="tech"><summary>Detalhes técnicos</summary>
+          <ul>
+            <li>API em Java 25 e Spring Boot 4.1; aplicativo Flutter.</li>
+            <li><strong>PostGIS 3.5:</strong> busca por raio sobre coluna <code>geography(Point, 4326)</code> com índice GiST.</li>
+            <li>Regras de integridade e privacidade no próprio banco (restrições, gatilhos, papéis e visões); a API não é dona das tabelas.</li>
+            <li><strong>Redis:</strong> “disponível agora” com expiração automática e limite de requisições por IP.</li>
+            <li>Senhas com Argon2id, JWT com refresh rotativo e revogação se um token já trocado for reutilizado, login com Google e URLs de upload assinadas (SigV4).</li>
+            <li><strong>Resiliência:</strong> desligamento gracioso, tempo limite por consulta, pool limitado e degradação controlada (sem Redis a busca continua); jobs que reconciliam arquivos órfãos; backup a cada 6 horas verificado por restauração.</li>
+            <li><strong>Observabilidade:</strong> Micrometer e Prometheus, com verificações de saúde de prontidão e vivacidade.</li>
+            <li>Privacidade: endereço oculto em atendimento à domicílio, WhatsApp nunca exposto, exclusão e anonimização de conta.</li>
+            <li>Testcontainers, testes de concorrência e teste de desempenho da busca; Docker Compose com contêiner da API sem privilégios.</li>
+          </ul>
+        </details>
         <a class="btn" href="https://github.com/fbentes/servoi-portfolio" rel="noopener">Ver arquitetura e decisões →</a>
       </div>
       <figure class="shot"><img src="img/servoi.png" alt="Tela de busca do Servoi, com prestadores no mapa coloridos pela nota" width="280" height="605" loading="lazy"><small>App real com dados fictícios</small></figure>
@@ -167,22 +212,18 @@
         <ul class="chips" aria-label="Tecnologias do ZapDeck">
           <li>Kotlin</li><li>Jetpack Compose</li><li>Room</li><li>Google ML Kit</li><li>Gemini (opcional)</li><li>NFC e QR Code</li>
         </ul>
+        <details class="tech"><summary>Detalhes técnicos</summary>
+          <ul>
+            <li>Kotlin, Jetpack Compose (Material 3), MVVM e Room, com funcionamento offline.</li>
+            <li>Pipeline de imagem próprio: recorte do cartão, remoção de fundo e sombras e rotação automática.</li>
+            <li>Leitura com Google ML Kit no aparelho; Gemini opcional (Retrofit); compartilhamento por QR Code (vCard) e NFC.</li>
+            <li>Chave de API fora do código, dados só no aparelho e testes com Robolectric e Roborazzi.</li>
+          </ul>
+        </details>
         <a class="btn" href="https://github.com/fbentes/zap-deck-app" rel="noopener">Ver código no GitHub →</a>
       </div>
       <figure class="shot"><img src="img/zapdeck.png" alt="Tela inicial do ZapDeck, com cartões de visita e botões de câmera e galeria" width="280" height="623" loading="lazy"><small>Captura gerada pelos testes do app</small></figure>
     </article>
-  </section>
-
-  <section aria-labelledby="t-skills">
-    <h2 id="t-skills">Como trabalho</h2>
-    <p class="sub">O que os projetos acima exercitam na prática.</p>
-    <div class="grid">
-      <div class="box"><h3>Backend e dados</h3><p>APIs em Java e Spring Boot, PostgreSQL com migrations versionadas, busca geográfica com PostGIS e cache com Redis.</p></div>
-      <div class="box"><h3>Aplicativos</h3><p>Flutter para Android e iOS, Android nativo com Kotlin e Jetpack Compose, e web com Svelte.</p></div>
-      <div class="box"><h3>Segurança e privacidade</h3><p>Autenticação com tokens de curta duração, regras de privacidade no banco e tratamento cuidadoso de dados pessoais.</p></div>
-      <div class="box"><h3>Qualidade</h3><p>Especificações escritas antes do código, decisões registradas (ADRs), testes automatizados e integração contínua.</p></div>
-      <div class="box"><h3>Operação</h3><p>Docker, ambientes de staging, backup verificado por restauração e métricas de monitoramento.</p></div>
-    </div>
   </section>
 </main>
 
