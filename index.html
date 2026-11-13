@@ -43,9 +43,14 @@
   table.exp td:first-child{font-weight:600}
   table.exp .det{font-weight:400;color:var(--ink-soft)}
   table.exp td:last-child,table.exp th:last-child{white-space:nowrap}
-  .hero-cert{display:flex;gap:20px;align-items:center}
+  .hero-cert{display:flex;gap:20px;align-items:center;margin-bottom:12px}
   .hero-cert .cert-txt{flex:1;min-width:0}
   .hero-cert .cert-txt p{text-align:left;hyphens:none}
+  .hero-cert .cert-txt p{font-size:15px;font-weight:600;color:var(--ink)}
+  .edu{font-size:15px;color:var(--ink);margin:0 0 22px}
+  .edu .det{color:var(--ink-soft)}
+  .edu .curso{font-weight:600;color:var(--accent)}
+
   .cert-mini{flex:0 0 170px;padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface);cursor:zoom-in;box-shadow:var(--shadow)}
   .cert-mini img{display:block;width:100%;height:auto}
   .cert-dlg{border:0;padding:0;background:transparent;max-width:min(94vw,1100px);max-height:94vh;overflow:visible}
@@ -125,9 +130,9 @@
       </button>
       <div class="cert-txt">
         <p><strong><a href="https://www.credly.com/badges/3a4b0aa7-215a-48c2-b11e-40853c7fcc56" target="_blank" rel="noopener">OCP Java Programmer</a></strong></p>
-        <p><strong>Pós-Graduação Lato Sensu em Inteligência Artificial e Machine Learning na UTFPR (Universidade Tecnológica Federal do Paraná)</strong></p>
       </div>
     </div>
+    <p class="edu"><strong>Pós-Graduação Lato Sensu em Inteligência Artificial e Machine Learning na UTFPR</strong> <span class="det">(Universidade Tecnológica Federal do Paraná)</span> <span class="curso">· em curso</span></p>
     <dialog id="dlg-cert" class="cert-dlg" aria-label="Certificado ampliado">
       <form method="dialog"><button class="cert-x" aria-label="Fechar">×</button></form>
       <img src="img/ocp-java-se-6.jpg" alt="Certificado Oracle Certified Professional, Java SE 6 Programmer, em nome de Fabio Anderson Correa Bentes">
