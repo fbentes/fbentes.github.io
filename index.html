@@ -275,7 +275,7 @@
   <div class="wrap">
     <p>© 2026 Fábio Anderson Corrêa Bentes. Todos os direitos reservados. Os textos, imagens e diagramas deste site e dos repositórios de portfólio não podem ser copiados nem reproduzidos sem autorização.</p>
     <p>Os nomes e perfis exibidos nas telas são fictícios.</p>
-    <p class="stats" id="stats" hidden>Visitas: <span data-c="TOTAL">–</span> · Cliques: currículo <span data-c="clique-curriculo">–</span> · certificado OCP <span data-c="clique-ocp">–</span> · Pós UTFPR <span data-c="clique-pos-utfpr">–</span> · OSIsoft PI <span data-c="clique-osisoft">–</span> · repositórios <span data-c="repos">–</span></p>
+    <p class="stats" id="stats" hidden>Visitas: <span data-c="/">–</span> · Cliques: currículo <span data-c="clique-curriculo">–</span> · certificado OCP <span data-c="clique-ocp">–</span> · Pós UTFPR <span data-c="clique-pos-utfpr">–</span> · OSIsoft PI <span data-c="clique-osisoft">–</span> · repositórios <span data-c="repos">–</span></p>
   </div>
 </footer>
 <script data-goatcounter="https://fbentes.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -295,7 +295,7 @@
   [].forEach.call(box.querySelectorAll("[data-c]"),function(s){spans[s.getAttribute("data-c")]=s;});
   var shown=false;
   function put(k,v){if(v===null||!spans[k])return;spans[k].textContent=fmt(v);if(!shown){box.hidden=false;shown=true;}}
-  ["TOTAL","clique-curriculo","clique-ocp","clique-pos-utfpr","clique-osisoft"].forEach(function(k){get(k).then(function(v){put(k,v);});});
+  ["/","clique-curriculo","clique-ocp","clique-pos-utfpr","clique-osisoft"].forEach(function(k){get(k).then(function(v){put(k,v);});});
   Promise.all(repos.map(get)).then(function(vs){
     if(vs.every(function(v){return v===null;}))return;
     put("repos",vs.reduce(function(a,b){return a+(b||0);},0));
